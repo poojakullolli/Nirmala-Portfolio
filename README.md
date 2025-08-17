@@ -1,31 +1,29 @@
 # Personal Portfolio Website
 
-A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS.
+A modern, responsive portfolio website built to showcase my projects, skills, and experiences in Electronics & Telecommunication Engineering.
 
-## 🌟 Features
+## Features
 
-- Responsive design that works on all devices
-- Dark theme with modern UI elements
-- Interactive animations and transitions
-- Contact form with EmailJS integration
-- Project showcase with live demos
-- Skills and certifications display
-- Social media integration
+- 🎯 Modern UI/UX with responsive design
+- 💼 Project showcase with detailed descriptions
+- 📜 Certifications and achievements section
+- 💡 Skills and interests visualization
+- 📱 Contact form for easy communication
+- 🎨 Custom theming and styling
 
-## 🚀 Technologies Used
+## Tech Stack
 
-- React
 - TypeScript
+- React
 - Tailwind CSS
-- EmailJS
-- Lucide React Icons
+- Lucide Icons
+- Next.js
 
-## 📦 Installation
+## Getting Started
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/poojakullolli/portfolio.git
-cd portfolio
+git clone https://github.com/Nirmalagk20/portfolio.git
 ```
 
 2. Install dependencies:
@@ -33,51 +31,38 @@ cd portfolio
 npm install
 ```
 
-3. Create a `.env` file in the root directory and add your EmailJS credentials:
-```env
-REACT_APP_EMAILJS_SERVICE_ID=your_service_id
-REACT_APP_EMAILJS_TEMPLATE_ID=your_template_id
-REACT_APP_EMAILJS_PUBLIC_KEY=your_public_key
-```
-
-4. Start the development server:
+3. Run the development server:
 ```bash
-npm start
+npm run dev
 ```
 
-## 🛠️ Development
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-- Run development server: `npm start`
-- Build for production: `npm run build`
-- Run tests: `npm test`
+## Project Structure
 
-## 📱 Sections
+```
+portfolio/
+├── src/
+│   ├── components/
+│   ├── content.ts    # Main content configuration
+│   ├── pages/
+│   └── styles/
+├── public/
+│   ├── certificates/
+│   └── images/
+└── README.md
+```
 
-- Hero Section with profile
-- Education details
-- Skills showcase
-- Featured Projects
-- Other Projects
+## Content Management
+
+All content is managed through `content.ts`, making it easy to update:
+- Projects
 - Certificates
-- Contact Form
-- Social Links
+- Skills
+- Personal Information
+- Contact Details
 
-## 📄 License
+## Contact
+- LinkedIn: [Nirmala Kankanwadi](https://www.linkedin.com/in/nirmala-kankanwadi-9547b3330)
+- GitHub: [@Nirmalagk20](https://github.com/Nirmalagk20)
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🔗 Links
-
-- Live Demo: [Portfolio Website](https://your-portfolio-url.com)
-- GitHub: [poojakullolli](https://github.com/poojakullolli)
-- LinkedIn: [Pooja Kullolli](https://www.linkedin.com/in/pooja-kullolli-68a95b338)
-
-## 👤 Contact
-
-- Email: poojakullolli55@gmail.com
-- Location: Belagavi, Karnataka
-
-## 🙏 Acknowledgments
-
-- Icons by [Lucide React](https://lucide.dev)
-- Technology logos from [Devicon](https://devicon.dev)
