@@ -10,15 +10,6 @@ interface Interest {
   color: string;
 }
 
-interface Project {
-  title: string;
-  description: string;
-  image?: string;
-  github: string;
-  live?: string;
-  status?: string;
-  tech?: string[];
-}
 
 const Portfolio = () => {
   const [activeTab, setActiveTab] = useState('projects');
