@@ -5,7 +5,7 @@ import {
   Activity, 
   Settings, 
   Radio, 
-  Waves, // Changed from Wave
+  Waves,
   CircuitBoard,
   Settings2, 
   Brain, 
@@ -181,6 +181,7 @@ export const skills: Skill[] = [
 ];
 
 export const images: Images = {
+  // Use absolute path starting with '/'
   profile: '/images/nirmala-profile.jpg',
   certificates: {
     pythonSimplilearn: '/certificates/python-simplilearn.jpg',
