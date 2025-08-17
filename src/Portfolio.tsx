@@ -1,20 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, MapPin, Send, Cpu, Wifi, Zap, Settings, Radio, Brain, Code, BarChart } from 'lucide-react';
+import { 
+  Github, 
+  ExternalLink, 
+  MapPin, 
+  Send, 
+  Mail 
+} from 'lucide-react';
 import emailjs from '@emailjs/browser';
-import { featuredProjects, certificates, skills } from './content';
-
-
-interface Interest {
-  name: string;
-  icon: React.ElementType;
-  color: string;
-}
-
+import { 
+  featuredProjects, 
+  certificates, 
+  skills, 
+  interests,
+  socialLinks,
+  personalInfo,
+  education,
+  contactInfo,
+  formConfig,
+} from './content';
 
 const Portfolio = () => {
   const [activeTab, setActiveTab] = useState('projects');
   const [isVisible, setIsVisible] = useState(false);
-  const [formData, setFormData] = useState<FormData>({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState(formConfig.initialState);
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(''); // 'success', 'error', or ''
 
@@ -28,28 +36,6 @@ const Portfolio = () => {
   useEffect(() => {
     setIsVisible(true);
   }, []);
-
-
-const interests: Interest[] = [
-  { name: "Embedded Systems", icon: Cpu, color: '#FF6B6B' },
-  { name: "IoT Development", icon: Wifi, color: '#4ECDC4' },
-  { name: "Microcontrollers", icon: Zap, color: '#45B7D1' },
-  { name: "Automation", icon: Settings, color: '#FECA57' },
-  { name: "Telecommunication Networks", icon: Radio, color: '#0077b6' },
-  { name: "VLSI Design", icon: Cpu, color: '#FFD166' }, // Use Cpu for now
-  { name: "Wireless Communication", icon: Wifi, color: '#9D4EDD' },
-  { name: "Circuit Design", icon: Settings, color: '#43aa8b' },
-  { name: "Machine Learning", icon: Brain, color: '#FF9FF3' },
-  { name: "Software Development", icon: Code, color: '#F95D6A' },
-  { name: "Data Science", icon: BarChart, color: '#4ECDC4' },
-];
-
-
-  const socialLinks = [
-  { icon: Github, url: 'https://github.com/Nirmalagk20', label: 'GitHub' },
-  { icon: Linkedin, url: 'https://www.linkedin.com/in/nirmala-kankanwadi-9547b3330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', label: 'LinkedIn' },
-  { icon: Mail, url: 'mailto:nirmalagk52@gmail.com', label: 'Email' }
-];
 
 
   // Add proper event types
@@ -70,7 +56,7 @@ const interests: Interest[] = [
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
-          to_name: 'Niramala Kankanwadi',
+          to_name: personalInfo.name,
         },
         EMAILJS_CONFIG.publicKey
       );
@@ -103,35 +89,35 @@ const interests: Interest[] = [
       <section className={`min-h-screen flex items-center justify-center px-4 sm:px-6 transition-all duration-1500 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="max-w-6xl mx-auto text-center">
           {/* Profile Picture */}
-          <div className="flex justify-center mb-8 transform hover:scale-105 transition-transform duration-700">
-            <div className="relative group">
-              <div className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full p-1 animate-spin group-hover:animate-pulse">
-                <div className="w-full h-full bg-gray-900 rounded-full flex items-center justify-center relative overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-800 rounded-full flex items-center justify-center text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-400 relative group-hover:text-white transition-colors duration-300">
-                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-full animate-pulse group-hover:from-blue-500/40 group-hover:to-purple-500/40 transition-all duration-500"></div>
-                    <span className="relative z-10 transform group-hover:scale-110 transition-transform duration-300">NK</span>
-                  </div>
-                </div>
-              </div>
-              <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 bg-yellow-400 rounded-full animate-bounce group-hover:bg-yellow-300 transition-colors duration-300"></div>
-              <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-4 h-4 sm:w-6 sm:h-6 bg-pink-400 rounded-full animate-pulse group-hover:bg-pink-300 transition-colors duration-300"></div>
-            </div>
-          </div>
+          <div className="flex justify-center mb-8">
+  <div className="relative group">
+    <div className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full p-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
+      <img 
+        src={personalInfo.profileImage}
+        alt={personalInfo.name}
+        className="w-full h-full object-cover rounded-full transition-transform duration-700 group-hover:scale-105"
+      />
+    </div>
+    <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 bg-yellow-400 rounded-full animate-bounce"></div>
+    <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-4 h-4 sm:w-6 sm:h-6 bg-pink-400 rounded-full animate-pulse"></div>
+  </div>
+</div>
           
           {/* Content */}
           <div className="space-y-6 transform transition-all duration-1000" style={{ animationDelay: '300ms' }}>
             <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 bg-clip-text text-transparent transform hover:scale-105 transition-transform duration-500 cursor-default">
-                Nirmala Kankanwadi
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 bg-clip-text text-transparent">
+                {personalInfo.name}
               </h1>
-              <p className="text-lg sm:text-xl text-gray-300 transform hover:text-white transition-colors duration-300">Electronics and Telecommunication Engineering</p>
-              <p className="text-base sm:text-lg text-gray-400 transform hover:text-gray-300 transition-colors duration-300">📍 Bagalkot, Karnataka</p>
+              <p className="text-lg sm:text-xl text-gray-300">{personalInfo.title}</p>
+              <p className="text-base sm:text-lg text-gray-400">📍 {personalInfo.location}</p>
             </div>
             
             <div className="space-y-4 max-w-2xl mx-auto">
   <h3 className="text-xl sm:text-2xl font-semibold text-blue-400">About Me</h3>
   <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
-    Electronics and Telecommunication Engineering student with expertise in embedded systems, IoT, and microcontroller programming. </p>
+    {personalInfo.about}
+  </p>
 </div>
 
 
@@ -143,11 +129,13 @@ const interests: Interest[] = [
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group w-12 h-12 sm:w-14 sm:h-14 bg-gray-800/50 backdrop-blur-sm hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 rounded-full transition-all duration-500 hover:scale-110 hover:shadow-xl hover:shadow-blue-500/30 border border-gray-600/30 hover:border-blue-500/50 flex items-center justify-center transform hover:-translate-y-1"
+                  className="group w-12 h-12 sm:w-14 sm:h-14 bg-gray-800/50 backdrop-blur-sm hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 rounded-full transition-all duration-500 hover:scale-110 hover:shadow-xl hover:shadow-blue-500/30 border border-gray-600/30 hover:border-blue-500/50 flex items-center justify-center"
                   title={social.label}
-                  style={{ animationDelay: `${index * 100 + 800}ms` }}
                 >
-                  <social.icon size={20} className="text-blue-400 group-hover:text-white transition-colors duration-300" />
+                  {React.createElement(social.icon, {
+                    size: 20,
+                    className: "text-blue-400 group-hover:text-white transition-colors duration-300"
+                  })}
                 </a>
               ))}
             </div>
@@ -164,13 +152,13 @@ const interests: Interest[] = [
     <div className="bg-gray-800/30 backdrop-blur-lg rounded-2xl p-6 sm:p-8 border border-gray-600/30 hover:border-blue-500/50 transition-all duration-700 hover:shadow-2xl hover:shadow-blue-500/10">
       <div className="flex flex-col gap-4">
         <div className="text-left">
-          <h3 className="text-xl sm:text-2xl font-semibold text-blue-400">Sir M Visvesvaraya Institute Of Technology</h3>
-          <p className="text-base sm:text-lg text-gray-300">B.E in Electronics And Telecommunication Engineering</p>
-          <p className="text-gray-400">Bangalore, India</p>
+          <h3 className="text-xl sm:text-2xl font-semibold text-blue-400">{education.school}</h3>
+          <p className="text-base sm:text-lg text-gray-300">{education.degree}</p>
+          <p className="text-gray-400">{education.location}</p>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-lg font-semibold text-green-400">CGPA: 7.9</span>
-          <span className="text-gray-400">2022 - Present</span>
+          <span className="text-lg font-semibold text-green-400">CGPA: {education.gpa}</span>
+          <span className="text-gray-400">{education.period}</span>
         </div>
       </div>
     </div>
@@ -351,10 +339,6 @@ const interests: Interest[] = [
               <div
                 key={index}
                 className="group flex flex-col items-center p-4 sm:p-6 bg-gray-800/30 backdrop-blur-lg rounded-2xl border border-gray-600/30 hover:border-blue-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:-translate-y-2 hover:shadow-2xl cursor-default"
-                style={{
-                animationDelay: `${index * 50}ms`,
-                ['--interest-color' as string]: interest.color
-              } as React.CSSProperties}
               >
                 <div 
                   className="w-12 h-12 sm:w-16 sm:h-16 mb-3 sm:mb-4 rounded-2xl flex items-center justify-center group-hover:rotate-6 transition-all duration-300 shadow-lg"
@@ -363,7 +347,11 @@ const interests: Interest[] = [
                     border: `2px solid ${interest.color}30`
                   }}
                 >
-                  <interest.icon size={24} style={{ color: interest.color }} className="group-hover:scale-110 transition-transform duration-300" />
+                  {React.createElement(interest.icon, {
+                    size: 24,
+                    className: "group-hover:scale-110 transition-transform duration-300",
+                    style: { color: interest.color }
+                  })}
                 </div>
                 <h3 className="text-xs sm:text-sm font-semibold text-gray-300 group-hover:text-white transition-colors duration-300 text-center leading-tight">
                   {interest.name}
@@ -388,8 +376,8 @@ const interests: Interest[] = [
                 </div>
                 <div className="text-left">
                   <p className="text-xs text-gray-400 uppercase tracking-wide">EMAIL</p>
-                  <a href="mailto:poojakullolli55@gmail.com" className="text-gray-300 hover:text-white transition-colors duration-300 text-sm sm:text-base">
-                    nirmalagk52@gmail.com
+                  <a href={`mailto:${contactInfo.email}`} className="text-gray-300 hover:text-white transition-colors duration-300 text-sm sm:text-base">
+                    {contactInfo.email}
                   </a>
                 </div>
               </div>
@@ -400,7 +388,7 @@ const interests: Interest[] = [
                 </div>
                 <div className="text-left">
                   <p className="text-xs text-gray-400 uppercase tracking-wide">LOCATION</p>
-                  <span className="text-gray-300 text-sm sm:text-base">Bagalkot, Karnataka</span>
+                  <span className="text-gray-300 text-sm sm:text-base">{contactInfo.location.city}, {contactInfo.location.state}</span>
                 </div>
               </div>
             </div>
@@ -438,7 +426,7 @@ const interests: Interest[] = [
                   required
                   disabled={isLoading}
                   className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 disabled:opacity-50"
-                  placeholder="Enter your name"
+                  placeholder={formConfig.placeholders.name}
                 />
               </div>
               <div className="text-left">
@@ -451,7 +439,7 @@ const interests: Interest[] = [
                   required
                   disabled={isLoading}
                   className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 disabled:opacity-50"
-                  placeholder="Enter your email"
+                  placeholder={formConfig.placeholders.email}
                 />
               </div>
             </div>
@@ -465,7 +453,7 @@ const interests: Interest[] = [
                 disabled={isLoading}
                 rows={5}
                 className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 resize-none disabled:opacity-50"
-                placeholder="Enter your message"
+                placeholder={formConfig.placeholders.message}
               />
             </div>
             <button
@@ -502,12 +490,15 @@ const interests: Interest[] = [
                   rel="noopener noreferrer"
                   className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-800/50 backdrop-blur-sm hover:bg-gray-700/70 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20 border border-gray-600/30 hover:border-blue-500/50 flex items-center justify-center"
                 >
-                  <social.icon size={20} className="text-blue-400" />
+                  {React.createElement(social.icon, {
+                    size: 20,
+                    className: "text-blue-400"
+                  })}
                 </a>
               ))}
             </div>
             <div className="text-center text-gray-400">
-              <p className="text-sm sm:text-base">&copy; 2025 Nirmala Kankanwadi. All rights reserved.</p>
+              <p className="text-sm sm:text-base">&copy; {new Date().getFullYear()} {personalInfo.name}. All rights reserved.</p>
             </div>
           </div>
         </div>
@@ -517,9 +508,3 @@ const interests: Interest[] = [
 };
 
 export default Portfolio;
-
-interface FormData {
-  name: string;
-  email: string;
-  message: string;
-}

@@ -1,3 +1,25 @@
+import { 
+  Cpu, 
+  Wifi, 
+  Zap, 
+  Activity, 
+  Settings, 
+  Radio, 
+  Waves, // Changed from Wave
+  CircuitBoard,
+  Settings2, 
+  Brain, 
+  Cog, 
+  Lightbulb, 
+  Code, 
+  BarChart, 
+  Shield,
+  Github,
+  Linkedin,
+  Mail
+} from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+
 export interface Project {
   title: string;
   description: string;
@@ -19,7 +41,7 @@ export interface Certificate {
 
 export interface Interest {
   name: string;
-  icon: string;
+  icon: LucideIcon;  // Changed this line
   color: string;
 }
 
@@ -32,9 +54,9 @@ export interface Education {
 }
 
 export interface SocialLink {
-  platform: string;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
   url: string;
-  icon: string;
+  label: string;
 }
 
 export interface FormData {
@@ -122,29 +144,24 @@ export const education: Education = {
 };
 
 export const socialLinks = [
-  { icon: 'Github', url: 'https://github.com/Nirmalagk20', label: 'GitHub' },
-  { icon: 'Linkedin', url: 'https://www.linkedin.com/in/nirmala-kankanwadi-9547b3330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', label: 'LinkedIn' },
-  { icon: 'Mail', url: 'mailto:nirmalagk52@gmail.com', label: 'Email' }
+  { icon: Github, url: 'https://github.com/Nirmalagk20', label: 'GitHub' },
+  { icon: Linkedin, url: 'https://www.linkedin.com/in/nirmala-kankanwadi-9547b3330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', label: 'LinkedIn' },
+  { icon: Mail, url: 'mailto:nirmalagk52@gmail.com', label: 'Email' }
 ];
 
 
 export const interests: Interest[] = [
-  { name: "Embedded Systems", icon: "Cpu", color: '#FF6B6B' },
-  { name: "IoT Development", icon: "Wifi", color: '#4ECDC4' },
-  { name: "Microcontrollers", icon: "Zap", color: '#45B7D1' },
-  { name: "Sensor Integration", icon: "Activity", color: '#96CEB4' },
-  { name: "Automation", icon: "Settings", color: '#FECA57' },
-  { name: "Telecommunication Networks", icon: "Radio", color: '#0077b6' },
-  { name: "Signal Processing", icon: "Waveform", color: '#8EC6C5' },
-  { name: "VLSI Design", icon: "Chip", color: '#FFD166' },
-  { name: "Circuit Design", icon: "Settings2", color: '#43aa8b' },
-  { name: "Wireless Communication", icon: "Wifi", color: '#9D4EDD' },
-  { name: "Machine Learning", icon: "Brain", color: '#FF9FF3' },
-  { name: "Problem Solving", icon: "Cog", color: '#54A0FF' },
-  { name: "Innovation", icon: "Lightbulb", color: '#5F27CD' },
-  { name: "Software Development", icon: "Code", color: '#F95D6A' },
-  { name: "Data Science", icon: "BarChart", color: '#4ECDC4' },
-  { name: "Networking & Security", icon: "Shield", color: '#277DA1' }
+  { name: "Embedded Systems", icon: Cpu as LucideIcon, color: '#FF6B6B' },
+  { name: "IoT Development", icon: Wifi as LucideIcon, color: '#4ECDC4' },
+  { name: "Microcontrollers", icon: Zap as LucideIcon, color: '#45B7D1' },
+  { name: "Automation", icon: Settings as LucideIcon, color: '#FECA57' },
+  { name: "Telecommunication Networks", icon: Radio as LucideIcon, color: '#0077b6' },
+  { name: "VLSI Design", icon: CircuitBoard as LucideIcon, color: '#FFD166' },
+  { name: "Circuit Design", icon: Settings2 as LucideIcon, color: '#43aa8b' },
+  { name: "Wireless Communication", icon: Wifi as LucideIcon, color: '#9D4EDD' },
+  { name: "Machine Learning", icon: Brain as LucideIcon, color: '#FF9FF3' },
+  { name: "Software Development", icon: Code as LucideIcon, color: '#F95D6A' },
+  { name: "Data Science", icon: BarChart as LucideIcon, color: '#4ECDC4' }
 ];
 
 
@@ -289,4 +306,3 @@ export const achievements = [
     date: "2024"
   }
 ];
-
