@@ -1,5 +1,3 @@
-import { Cpu, Wifi, Zap, Activity, Settings, Radio, Shield, Brain, Cog, Code, BarChart } from 'lucide-react';
-
 export interface Project {
   title: string;
   description: string;
@@ -291,3 +289,4 @@ export const achievements = [
     date: "2024"
   }
 ];
+
