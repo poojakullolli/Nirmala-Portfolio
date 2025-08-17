@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, Code, ExternalLink, MapPin, Send, Brain, BarChart, Cpu, Wifi, Zap, Settings, Radio } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, MapPin, Send, Cpu, Wifi, Zap, Settings, Radio, Brain, Code, BarChart } from 'lucide-react';
 import emailjs from '@emailjs/browser';
-import { featuredProjects, certificates, skills, interests } from './content'; // Add interests here
+import { featuredProjects, certificates, skills } from './content';
 
 
 interface Interest {
