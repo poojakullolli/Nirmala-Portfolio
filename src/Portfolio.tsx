@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, Code, ExternalLink, Award, MapPin, Send, Monitor, Brain, Eye, MessageSquare, Cog, BarChart, Cpu, Wifi, Zap, Activity, Settings, Radio, Shield } from 'lucide-react';
+import { Github, Linkedin, Mail, Code, ExternalLink, MapPin, Send, Brain, BarChart, Cpu, Wifi, Zap, Settings, Radio } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { featuredProjects, certificates, skills, interests } from './content'; // Add interests here
-import { certificateImages } from './uploads';
+
 
 interface Interest {
   name: string;
@@ -79,7 +79,7 @@ const interests: Interest[] = [
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
-          to_name: 'Pooja Kullolli',
+          to_name: 'Niramala Kankanwadi',
         },
         EMAILJS_CONFIG.publicKey
       );
@@ -516,7 +516,7 @@ const interests: Interest[] = [
               ))}
             </div>
             <div className="text-center text-gray-400">
-              <p className="text-sm sm:text-base">&copy; 2024 Pooja Kullolli. All rights reserved.</p>
+              <p className="text-sm sm:text-base">&copy; 2025 Nirmala Kankanwadi. All rights reserved.</p>
             </div>
           </div>
         </div>
